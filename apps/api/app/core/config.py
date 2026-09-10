@@ -36,6 +36,14 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
     API_V1_PREFIX: str = "/api/v1"
 
+    # Security & JWT configuration
+    JWT_SECRET_KEY: str = Field(
+        default="cortexa_dev_super_secret_jwt_key_change_in_production_32bytes",
+        description="Secret key for signing JWT tokens",
+    )
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
+
     # CORS configuration
     ALLOWED_ORIGINS: list[str] | str = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
