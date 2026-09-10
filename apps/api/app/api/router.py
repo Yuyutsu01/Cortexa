@@ -5,9 +5,13 @@ Combines modular API routes under versioned prefixes.
 
 from fastapi import APIRouter
 
-from app.api.routes import health
+from app.api.routes import audit, auth, health, members, organizations
 
 api_router = APIRouter()
 
-# Include health routes under /api/v1
+# Register API v1 routes
 api_router.include_router(health.router)
+api_router.include_router(auth.router)
+api_router.include_router(organizations.router)
+api_router.include_router(members.router)
+api_router.include_router(audit.router)
